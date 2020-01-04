@@ -1,3 +1,5 @@
+// import SwimTeam from "./swimTeam.js";
+
 (function() {
 
   const serverUrl = 'http://127.0.0.1:3000';
@@ -5,7 +7,16 @@
   //
   // TODO: build the swim command fetcher here
   //
-
+  const ajaxGetData = () => {
+    setInterval($.ajax({
+      type: 'GET',
+      url: serverUrl,
+      success: (res) => {
+        // reload the page
+        SwimTeam.move(res);
+      }
+    }), 1000);
+  }
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
